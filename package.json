@@ -1,0 +1,36 @@
+{
+  "name": "grunt-i18n-checker",
+  "description": "Grunt plugin for i18n-checker",
+  "version": "0.1.0",
+  "author": {
+    "name": "Linagora folks",
+    "email": "dev@linagora.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ci.open-paas.org/stash/scm/or/grunt-i18n-checker.git"
+  },
+  "license": "AGPL-3.0",
+  "scripts": {
+    "test": "grunt"
+  },
+  "dependencies": {
+    "i18n-checker": "git+https://ci.open-paas.org/stash/scm/or/i18n-checker.git#4f9b8ad9932"
+  },
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "grunt": "^1.0.1",
+    "grunt-eslint": "^19.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  },
+  "keywords": [
+    "gruntplugin",
+    "i18n-checker",
+    "i18n",
+    "translation",
+    "validator",
+    "checker"
+  ]
+}
