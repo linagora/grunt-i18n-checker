@@ -37,11 +37,18 @@ function buildTaskOption(options) {
   const baseDir = path.normalize(options.baseDir);
 
   const awesomeModuleLocaleDirs = findModuleDirs(baseDir)
-    .map(dir => path.join(dir, 'backend/lib/i18n/locales'))
-    .filter(dir => isDirectory(baseDir, dir))
-    .map(localeDir => ({ localeDir }));
+    .map(moduleDir => ({
+      localeDir: path.join(moduleDir, 'backend/lib/i18n/locales'),
+      templateSrc: path.join(moduleDir, 'frontend/**/*.jade')
+    }))
+    .filter(dir => isDirectory(baseDir, dir.localeDir));
+
   const dirs = [{
     localeDir: 'backend/i18n/locales',
+    templateSrc: [
+      'frontend/views/**/*.jade',
+      'frontend/js/**/*.jade'
+    ],
     core: true
   },
     ...awesomeModuleLocaleDirs
