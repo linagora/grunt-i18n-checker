@@ -13,17 +13,21 @@ module.exports = function(grunt) {
     const taskOptions = buildTaskOption(options);
 
     try {
-      checker(taskOptions, (err, report) => {
+      checker(taskOptions, (err, result) => {
         if (err) {
           return done(err);
         }
 
-        if (report.length) {
-          reporter(report);
-          done(new Error('Failed'));
-        } else {
-          done();
+        const report = reporter(result);
+        const message = `${report.error} error(s). ${report.warning} warning(s).`;
+
+        if (report.error) {
+          grunt.fail.warn(message);
+        } else if (report.warning) {
+          grunt.log.writeln(message);
         }
+
+        done();
       });
     } catch (err) {
       console.error(err);
