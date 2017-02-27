@@ -5,6 +5,14 @@ const path = require('path');
 const reporter = checker.reporters.standard;
 
 const MODULES_DIR = 'modules';
+const DEFAULT_CORE_DIR = {
+  localeDir: 'backend/i18n/locales',
+  templateSrc: [
+    'frontend/views/**/*.jade',
+    'frontend/js/**/*.jade'
+  ],
+  core: true
+};
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('i18n_checker', 'Grunt plugin for i18n-checker', function() {
@@ -39,6 +47,7 @@ module.exports = function(grunt) {
 function buildTaskOption(options) {
   const { verifyOptions } = options;
   const baseDir = path.normalize(options.baseDir);
+  const dirs = options.dirs || [];
 
   const awesomeModuleLocaleDirs = findModuleDirs(baseDir)
     .map(moduleDir => ({
@@ -47,16 +56,11 @@ function buildTaskOption(options) {
     }))
     .filter(dir => isDirectory(baseDir, dir.localeDir));
 
-  const dirs = [{
-    localeDir: 'backend/i18n/locales',
-    templateSrc: [
-      'frontend/views/**/*.jade',
-      'frontend/js/**/*.jade'
-    ],
-    core: true
-  },
-    ...awesomeModuleLocaleDirs
-  ];
+  if (dirs.filter(dir => dir.core).length === 0) {
+    dirs.unshift(DEFAULT_CORE_DIR);
+  }
+
+  dirs.push(...awesomeModuleLocaleDirs);
 
   return {
     baseDir,
@@ -66,9 +70,13 @@ function buildTaskOption(options) {
 }
 
 function findModuleDirs(baseDir) {
-  const dirs = fs.readdirSync(path.join(baseDir, MODULES_DIR));
+  try {
+    const dirs = fs.readdirSync(path.join(baseDir, MODULES_DIR));
 
-  return dirs.map(dir => path.join(MODULES_DIR, dir));
+    return dirs.map(dir => path.join(MODULES_DIR, dir));
+  } catch (err) {
+    return [];
+  }
 }
 
 function isDirectory(baseDir, dirPath) {
