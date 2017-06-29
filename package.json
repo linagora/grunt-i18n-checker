@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://ci.open-paas.org/stash/scm/or/grunt-i18n-checker.git"
+    "url": "https://ci.linagora.com/linagora/lgs/openpaas/grunt-i18n-checker.git"
   },
   "license": "AGPL-3.0",
   "scripts": {
