@@ -20,7 +20,6 @@
     "eslint-plugin-import": "^2.2.0",
     "grunt": "^1.0.1",
     "grunt-eslint": "^19.0.0",
-
     "load-grunt-tasks": "^3.5.2"
   },
   "peerDependencies": {
