@@ -8,8 +8,8 @@ const MODULES_DIR = 'modules';
 const DEFAULT_CORE_DIR = {
   localeDir: 'backend/i18n/locales',
   templateSrc: [
-    'frontend/views/**/*.jade',
-    'frontend/js/**/*.jade'
+    'frontend/views/**/*.pug',
+    'frontend/js/**/*.pug'
   ],
   core: true
 };
@@ -52,7 +52,7 @@ function buildTaskOption(options) {
   const awesomeModuleLocaleDirs = findModuleDirs(baseDir)
     .map(moduleDir => ({
       localeDir: path.join(moduleDir, 'backend/lib/i18n/locales'),
-      templateSrc: path.join(moduleDir, 'frontend/**/*.jade')
+      templateSrc: path.join(moduleDir, 'frontend/**/*.pug')
     }))
     .filter(dir => isDirectory(baseDir, dir.localeDir));
 
