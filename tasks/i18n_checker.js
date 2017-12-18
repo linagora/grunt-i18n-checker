@@ -1,4 +1,4 @@
-const checker = require('i18n-checker');
+const checker = require('@linagora/i18n-checker');
 const fs = require('fs');
 const path = require('path');
 

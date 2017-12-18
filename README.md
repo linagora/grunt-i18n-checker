@@ -14,7 +14,7 @@ npm install @linagora/grunt-i18n-checker --save-dev
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-i18n-checker');
+grunt.loadNpmTasks('@linagora/grunt-i18n-checker');
 ```
 
 ## The "i18n_checker" task
