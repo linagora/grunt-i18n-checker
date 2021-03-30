@@ -1,3 +1,5 @@
+![Archived](https://img.shields.io/badge/Current_Status-archived-blue?style=flat)
+
 # grunt-i18n-checker
 
 > Grunt plugin for i18n-checker
